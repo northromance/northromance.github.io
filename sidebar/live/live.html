@@ -9,15 +9,6 @@
   <link rel="stylesheet" href="../../css/sidebar.css">
 
   <style>
-    /* 标签页居中 */
-    .tabs {
-      display: flex;
-      justify-content: center; /* 标签页居中 */
-      gap: 10px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #eee;
-    }
-
     /* =================================
        现场作品网格布局
        ========================================== */
@@ -111,39 +102,6 @@
       opacity: 1;                    /* 悬停时显示播放图标 */
     }
 
-    /* ==========================================
-       选项卡内容
-       ========================================== */
-
-    .tab {
-      padding: 12px 20px;
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      cursor: pointer;
-      font-size: 1rem;
-      color: #666;
-      transition: all 0.3s;
-    }
-
-    .tab.active {
-      color: #1e3c72;
-      border-bottom-color: #1e3c72;
-      font-weight: bold;
-    }
-
-    .tab:hover {
-      color: #1e3c72;
-    }
-
-    /* 选项卡内容 */
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
   </style>
 </head>
 <body>
@@ -156,8 +114,8 @@
       <ul>
         <li><a href="../../index.htm?skipIntro=1" target="_self">首页</a></li>
         <li><a href="../albums/albums.html">专辑</a></li>
-        <li><a href="../singles/singles.html">单曲</a></li>
-        <li><a href="live.html" class="active">现场</a></li>
+<li><a href="live.html" class="active">现场</a></li>
+        <li><a href="../download/download.html">下载</a></li>
       </ul>
     </nav>
   </div>
@@ -166,7 +124,7 @@
        页头
        ========================================== -->
   <header>
-    <h1>现场作品</h1>
+    <h1>现场</h1>
     <p>记录那些珍贵的现场时刻</p>
   </header>
 
@@ -174,58 +132,71 @@
        主体内容
        ========================================== -->
   <main>
-    <!-- 选项卡导航 -->
-    <div class="tabs">
-      <div class="tab active" data-tab="concerts">演出现场</div>
-      <div class="tab" data-tab="sessions">刘森和他的朋友们</div>
-    </div>
-
-    <!-- ==========================================
-         选项卡内容区域
-         ========================================== -->
-    
-    <!-- 演出现场 -->
-    <div id="concerts" class="tab-content active">
-      <div class="live-grid">
-        <!-- 示例现场作品卡片 -->
-        <div class="live-card" onclick="window.open('livevideo/live-detail.html', '_blank')">
-          <img src="../../img/livecover/北京青年之声.png">
-          <div class="play-overlay"></div>
-          <div class="live-card-info">
-            <h3>华北浪漫革命首场演出</h3>
-            <p class="subtitle">2024.12.15 · 北京 · 某某Live House</p>
-          </div>
+    <div class="live-grid">
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=laosao_firstshow'">
+        <img src="../../img/livecover/北京青年之声.png">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>华北浪漫革命首场演出</h3>
+          <p class="subtitle">2024.12.15 · 北京 · 某某Live House</p>
         </div>
+      </div>
 
-        <div class="live-card" onclick="window.open('livevideo/yuyue.html', '_blank')">
-          <img src="../../img/livecover/北京青年之声.png">
-          <div class="play-overlay"></div>
-          <div class="live-card-info">
-            <h3>鱼跃凭海阔(网友拟)</h3>
-            <p class="subtitle">2018/12/07 · 北京 · 乐空间</p>
-          </div>
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=yuyue_live'">
+        <img src="../../img/livecover/北京青年之声.png">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>鱼跃凭海阔(网友拟)</h3>
+          <p class="subtitle">2018/12/07 · 北京 · 乐空间</p>
         </div>
+      </div>
 
-        <!-- 可以继续添加更多卡片 -->
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=zhaoabu_live'">
+        <img src="../../img/livecover/北京青年之声.png" alt="录音现场1">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>赵阿不</h3>
+          <p class="subtitle">2024.10.05 · 录音棚A</p>
+        </div>
+      </div>
+
+      <!-- 从专辑详情提取的 Live 卡片（保留专辑页原有Live不变） -->
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=rain_winter'">
+        <img src="../../img/cover/无边界音乐/雨Rain.png" alt="雨 RAIN RAIN RAIN Live">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>雨 RAIN RAIN RAIN · Live</h3>
+          <p class="subtitle">2019.03.31 · 方磊《走失的水流》首发式</p>
+        </div>
+      </div>
+
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=yunnan_diyi'">
+        <img src="../../img/cover/无边界音乐/云南来信.png" alt="云南来信 敌意 Live">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>云南来信 · 敌意 Live</h3>
+          <p class="subtitle">专辑现场版本 · 无边界音乐</p>
+        </div>
+      </div>
+
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=baiguan_v1'">
+        <img src="../../img/cover/无边界音乐/云南来信.png" alt="云南来信 白鹳 Live 版本一">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>云南来信 · 白鹳 Live（版本一）</h3>
+          <p class="subtitle">首发会现场 · 无边界音乐</p>
+        </div>
+      </div>
+
+      <div class="live-card" onclick="window.location.href='livevideo/album-live-player.html?id=baiguan_v2'">
+        <img src="../../img/cover/无边界音乐/云南来信.png" alt="云南来信 白鹳 Live 版本二">
+        <div class="play-overlay"></div>
+        <div class="live-card-info">
+          <h3>云南来信 · 白鹳 Live（版本二）</h3>
+          <p class="subtitle">末端现场 · 无边界音乐</p>
+        </div>
       </div>
     </div>
-
-    <!-- 录音现场 -->
-    <div id="sessions" class="tab-content">
-      <div class="live-grid">
-        <div class="live-card" onclick="window.open('liusenfriend/liusenfriend.html', '_blank')">
-          <img src="../../img/livecover/北京青年之声.png" alt="录音现场1">
-          <div class="play-overlay"></div>
-          <div class="live-card-info">
-            <h3>赵阿不</h3>
-            <p class="subtitle">2024.10.05 · 录音棚A</p>
-          </div>
-        </div>
-
-        <!-- 可以继续添加更多录音现场 -->
-      </div>
-    </div>
-
   </main>
 
   <!-- ==========================================
@@ -239,26 +210,5 @@
        JavaScript 交互逻辑
        ========================================== -->
   <script src="../../js/main.js"></script>
-  
-  <script>
-    // 选项卡切换功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const tabs = document.querySelectorAll('.tab');
-      const contents = document.querySelectorAll('.tab-content');
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          // 移除所有活动状态
-          tabs.forEach(t => t.classList.remove('active'));
-          contents.forEach(c => c.classList.remove('active'));
-
-          // 添加当前选中状态
-          tab.classList.add('active');
-          const targetId = tab.getAttribute('data-tab');
-          document.getElementById(targetId).classList.add('active');
-        });
-      });
-    });
-  </script>
 </body>
 </html>

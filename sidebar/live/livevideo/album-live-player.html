@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>现场宽屏播放</title>
+
+  <link rel="stylesheet" href="../../../css/style.css">
+  <link rel="stylesheet" href="../../../css/sidebar.css">
+
+  <style>
+    .player-wrap {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 8px 0 16px;
+      color: #1e3c72;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .video-shell {
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-shell video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+    }
+
+    .meta-card {
+      margin-top: 14px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .meta-card h2 {
+      margin: 0 0 8px 0;
+      font-size: 1.2rem;
+      color: #1b3358;
+    }
+
+    .meta-card p {
+      margin: 0;
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="sidebar" class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="../../../index.htm?skipIntro=1" target="_self">首页</a></li>
+        <li><a href="../../albums/albums.html" target="_self">专辑</a></li>
+<li><a href="../live.html" target="_self">现场</a></li>
+        <li><a href="../../download/download.html">下载</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <header>
+    <h1 id="page-title">现场宽屏播放</h1>
+  </header>
+
+  <main>
+    <div class="player-wrap">
+      <a class="back-link" href="../live.html">← 返回现场页</a>
+
+      <div class="video-shell">
+        <video id="live-video" controls preload="metadata"></video>
+      </div>
+
+      <div class="meta-card">
+        <h2 id="video-title">视频标题</h2>
+        <p id="video-subtitle">视频信息</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function () {
+      const catalog = {
+        laosao_firstshow: {
+          title: '华北浪漫革命首场演出 · 牢骚',
+          subtitle: '2024.12.15 · 北京 · 某某Live House',
+          src: '../../../video/北京青年广播牢骚.mp4',
+          poster: '../../../img/livecover/北京青年之声.png'
+        },
+        yuyue_live: {
+          title: '鱼跃凭海阔（网友拟）',
+          subtitle: '2018.12.07 · 北京 · 乐空间',
+          src: '../../../video/鱼跃凭海阔.mp4',
+          poster: '../../../img/livecover/北京青年之声.png'
+        },
+        zhaoabu_live: {
+          title: '赵阿不 · 现场',
+          subtitle: '2024.10.05 · 录音棚A',
+          src: '../../../video/缺口.mp4',
+          poster: '../../../img/livecover/北京青年之声.png'
+        },
+        rain_winter: {
+          title: '雨 RAIN RAIN RAIN · Live',
+          subtitle: '2019.03.31 · 方磊《走失的水流》首发式',
+          src: '../../../video/冬夜里的雨滴.mp4',
+          poster: '../../../img/cover/无边界音乐/雨Rain.png'
+        },
+        yunnan_diyi: {
+          title: '云南来信 · 敌意 Live',
+          subtitle: '专辑现场版本 · 无边界音乐',
+          src: '../../../video/敌意.mp4',
+          poster: '../../../img/cover/无边界音乐/云南来信.png'
+        },
+        baiguan_v1: {
+          title: '云南来信 · 白鹳 Live（版本一）',
+          subtitle: '首发会现场 · 无边界音乐',
+          src: '../../../video/白鹳首发会.mp4',
+          poster: '../../../img/cover/无边界音乐/云南来信.png'
+        },
+        baiguan_v2: {
+          title: '云南来信 · 白鹳 Live（版本二）',
+          subtitle: '末端现场 · 无边界音乐',
+          src: '../../../video/末端白鹳.mp4',
+          poster: '../../../img/cover/无边界音乐/云南来信.png'
+        }
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get('id');
+      const data = catalog[id] || catalog.laosao_firstshow;
+
+      const pageTitle = document.getElementById('page-title');
+      const videoTitle = document.getElementById('video-title');
+      const videoSubtitle = document.getElementById('video-subtitle');
+      const video = document.getElementById('live-video');
+
+      pageTitle.textContent = data.title;
+      videoTitle.textContent = data.title;
+      videoSubtitle.textContent = data.subtitle;
+      document.title = data.title + ' - 宽屏播放';
+
+      video.poster = data.poster;
+      video.innerHTML = '';
+      const source = document.createElement('source');
+      source.src = data.src;
+      source.type = 'video/mp4';
+      video.appendChild(source);
+      video.load();
+
+      const playPromise = video.play();
+      if (playPromise && typeof playPromise.catch === 'function') {
+        playPromise.catch(function () {
+          // Browser policy may block autoplay with sound.
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
