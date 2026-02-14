@@ -18,7 +18,7 @@
   <div id="sidebar" class="sidebar">
     <nav class="sidebar-nav">
       <ul>
-        <li><a href="../../index.htm" target="_self">首页</a></li>
+        <li><a href="../../index.htm?skipIntro=1" target="_self">首页</a></li>
         <li><a href="albums.html" class="active">专辑</a></li>
         <li><a href="../singles/singles.html">单曲</a></li>
         <li><a href="../live/live.html">现场</a></li>
@@ -39,19 +39,10 @@
        ========================================== -->
   <main>
 
-  
-    <!-- 选项卡导航 -->
-    <div class="tabs">
-      <div class="tab active" data-tab="albums">秋秋叶</div>
-      <div class="tab" data-tab="northwave">华北浪革</div>
-      <div class="tab" data-tab="wubianjie">无边界音乐</div>
-    </div>
-
-    <!-- ==========================================
-         选项卡内容区域
-         ========================================== -->
-    <div id="albums" class="tab-content active">
-      <div class="albums-grid">
+    <div class="albums-stack">
+      <section id="qiuyey" class="artist-section" aria-labelledby="qiuyey-title">
+        <h2 id="qiuyey-title" class="artist-title">秋秋叶</h2>
+        <div class="albums-grid">
         <!-- 单个专辑卡片 -->
         <div class="album-card">
             <a href="detail/秋秋叶/渡.html">
@@ -84,10 +75,11 @@
               <h3>面朝大海春暖花开</h3>
         </div>
       </div>
-    </div>
+      </section>
 
-    <div id="northwave" class="tab-content">
-      <div class="albums-grid">
+      <section id="northwave" class="artist-section" aria-labelledby="northwave-title">
+        <h2 id="northwave-title" class="artist-title">华北浪革</h2>
+        <div class="albums-grid">
           <div class="album-card">
               <a href="detail/华北浪革/县城.html">
                 <img src="../../img/cover/华北浪革/县城.png" alt="县城">
@@ -126,15 +118,16 @@
           </div>
           <div class="album-card">
               <a href="detail/华北浪革/永隔一江水.html">
-                <img src="../../../img/cover/华北浪革/永隔一江水.jpg" alt="永隔一江水">
+                <img src="../../img/cover/华北浪革/永隔一江水.jpg" alt="永隔一江水">
               </a>
               <h3>永隔一江水</h3>
         </div>
       </div>
-    </div>
+      </section>
 
-    <div id="wubianjie" class="tab-content">
-      <div class="albums-grid">
+      <section id="wubianjie" class="artist-section" aria-labelledby="wubianjie-title">
+        <h2 id="wubianjie-title" class="artist-title">无边界音乐</h2>
+        <div class="albums-grid">
           <div class="album-card"><img src="../../img/cover/无边界音乐/十七.jpg" alt="十七"><h3>十七</h3></div>
           <div class="album-card">
           <a href="detail/无边界音乐/雨Rain.html">
@@ -152,38 +145,13 @@
 
 
       </div>
+      </section>
     </div>
   </main>
 
    <!-- 歌词显示框 -->
   <div id="lyric-box" class="hero h2">欢迎来到我的网页</div>
   
-
-  <!-- ==========================================
-       选项卡切换逻辑脚本
-       ========================================== -->
-  <script>
-    // 获取所有选项卡元素
-    const tabs = document.querySelectorAll('.tab');
-
-    // 获取所有选项卡内容元素
-    const contents = document.querySelectorAll('.tab-content');
-
-    // 遍历每个选项卡，绑定点击事件
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // 1. 切换选项卡高亮样式
-        tabs.forEach(t => t.classList.remove('active')); // 移除所有选项卡高亮
-        tab.classList.add('active');                     // 当前点击选项卡高亮
-
-        // 2. 切换对应内容显示
-        const target = tab.dataset.tab;                 // 获取当前选项卡对应内容的 id
-        contents.forEach(c => c.classList.remove('active')); // 隐藏所有内容
-        document.getElementById(target).classList.add('active'); // 显示对应内容
-      });
-    });
-  </script>
-
   <!-- 点击滚动歌词逻辑 -->
 
   <script src="../../js/lyricswitch.js" defer></script>

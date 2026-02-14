@@ -2,6 +2,24 @@
 (function(){
   const overlay = document.getElementById('intro-overlay');
   if (!overlay) return;
+  const search = new URLSearchParams(window.location.search);
+  const skipByParam = search.get('skipIntro') === '1';
+  let skipByReferrer = false;
+  if (document.referrer) {
+    try {
+      skipByReferrer = new URL(document.referrer).origin === window.location.origin;
+    } catch (e) {
+      skipByReferrer = false;
+    }
+  }
+  if (skipByParam || skipByReferrer) {
+    overlay.remove();
+    if (skipByParam && window.history && window.history.replaceState) {
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+    return;
+  }
   const canvas = document.getElementById('intro-canvas');
   const ctx = canvas.getContext('2d');
   const ecgCanvas = document.getElementById('intro-ecg');

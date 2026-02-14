@@ -1,5 +1,28 @@
 /* album-detail.css - 专辑ablum展示的那页专用显示页面统一样式 */
 
+.albums-stack {
+  display: grid;
+  gap: 26px;
+}
+
+.artist-section {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 0;
+  border-top: 1px solid #d9d9d9;
+}
+
+.artist-section:first-child {
+  border-top: 0;
+}
+
+.artist-title {
+  margin: 0 20px 14px;
+  color: #123057;
+  font-size: 1.45rem;
+  text-align: center;
+}
+
 /* ==========================================
    专辑卡片通用基础样式 (适用于所有专辑卡片)
    ========================================== */
@@ -85,7 +108,7 @@
   padding: 0 20px;               /* 左右内边距 */
   justify-content: center;       /* 网格居中 */
   max-width: 1200px;             /* 限制最大宽度 */
-  margin: 0 auto;                /* 整个网格居中 */
+  margin: 0 auto;                /* 整体居中 */
 }
 
 /* ==========================================
