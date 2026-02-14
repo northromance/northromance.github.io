@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>峨眉 - 专辑详情</title>
+
+  <link rel="stylesheet" href="../../../../css/album-in.css">
+  <link rel="stylesheet" href="../../../../css/album-detail.css">
+  <link rel="stylesheet" href="../../../../css/style.css">
+  <link rel="stylesheet" href="../../../../css/player.css">
+  <link rel="stylesheet" href="../../../../css/sidebar.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+
+  <style>
+    .album-detail {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .album-cover {
+      flex: 1;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .album-info {
+      flex: 2;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .tab {
+      padding: 8px 16px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tab:hover {
+      background: #ddd;
+    }
+
+    .tab.active {
+      background: #4285f4;
+      color: #fff;
+      border-color: #4285f4;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    #lyrics-text .highlight {
+      color: #4285f4;
+      font-weight: bold;
+    }
+
+    header {
+      margin-left: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="sidebar" class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="../../../../index.htm?skipIntro=1" target="_self">首页</a></li>
+        <li><a href="../../albums.html" class="active">专辑</a></li>
+        <li><a href="../../../live/live.html">现场</a></li>
+        <li><a href="../../../download/download.html">下载</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <header>
+    <h1>峨眉</h1>
+  </header>
+
+  <main>
+    <div class="album-detail">
+      <div class="album-cover">
+        <img src="../../../../img/cover/华北浪革/峨眉.jpg" alt="峨眉" width="100%">
+        <div id="aplayer-container"></div>
+      </div>
+
+      <div class="album-info">
+        <div class="info-section">
+          <div class="tabs">
+            <div class="tab active" data-target="intro">简介</div>
+            <div class="tab" data-target="lyrics">歌词</div>
+          </div>
+
+          <div id="intro" class="tab-content active">
+            <h2>专辑简介</h2>
+            <div style="color: #333; line-height: 1.8;">
+              <p>刘森个人第二张专辑《峨眉》</p>
+            </div>
+          </div>
+
+          <div id="lyrics" class="tab-content">
+            <h2>歌词</h2>
+            <div id="lyrics-text">
+              <p style="color:#666;">歌词内容待更新...</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="live-section-inner">
+          <div class="live-tabs">
+            <div class="live-tab active" data-target="creator-info">创作者说</div>
+          </div>
+
+          <div class="live-content">
+            <div id="creator-info" class="live-tab-content active">
+              <div class="video-item">
+                <div id="creator-text">
+                  <p style="line-height: 1.8; color: #333;">
+                    这是《峨眉》页面的首版结构，保持了华北浪革专辑页的布局与交互方式。
+                  </p>
+                  <p style="margin-top: 15px; line-height: 1.8; color: #333;">
+                    你后续可直接替换封面、补充 MP3 与 LRC，并继续完善简介与创作说明。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 华北浪漫革命</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <script src="../../../../js/lyrics-manager.js"></script>
+  <script src="../../../../js/main.js"></script>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  const liveTabs = document.querySelectorAll('.live-tab');
+  const liveContents = document.querySelectorAll('.live-tab-content');
+
+  liveTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      liveTabs.forEach(t => t.classList.remove('active'));
+      liveContents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  const lyricsManager = new LyricsManager({
+    lyricsContainerId: 'lyrics-text',
+    highlightClass: 'highlight'
+  });
+
+  const albumData = {
+    trackList: [
+      {
+        name: '夜枕青山',
+        artist: '刘森',
+        url: '../../../../audio/华北浪革/峨眉/夜枕青山.mp3',
+        cover: '../../../../img/cover/华北浪革/峨眉.jpg',
+        lrc: '../../../../audio/华北浪革/峨眉/夜枕青山.lrc'
+      },
+      {
+        name: '从过去来的人',
+        artist: '刘森',
+        url: '../../../../audio/华北浪革/峨眉/从过去来的人.mp3',
+        cover: '../../../../img/cover/华北浪革/峨眉.jpg',
+        lrc: '../../../../audio/华北浪革/峨眉/从过去来的人.lrc'
+      }
+    ]
+  };
+
+  const ap = new APlayer({
+    container: document.getElementById('aplayer-container'),
+    fixed: false,
+    autoplay: false,
+    theme: '#FADFA3',
+    loop: 'all',
+    listFolded: false,
+    audio: albumData.trackList
+  });
+
+  let isUserSeeking = false;
+
+  ap.on('timeupdate', () => {
+    if (!isUserSeeking) {
+      lyricsManager.syncLyrics();
+    }
+  });
+
+  ap.on('seeking', () => {
+    isUserSeeking = true;
+  });
+
+  ap.on('seeked', () => {
+    isUserSeeking = false;
+  });
+
+  ap.on('listswitch', (info) => {
+    const idx = info && typeof info.index === 'number' ? info.index : 0;
+    const currentAudio = ap.list.audios[idx];
+    if (currentAudio && currentAudio.lrc) {
+      lyricsManager.loadLyrics(currentAudio.lrc);
+    }
+  });
+
+  if (albumData.trackList[0] && albumData.trackList[0].lrc) {
+    lyricsManager.loadLyrics(albumData.trackList[0].lrc);
+  }
+});
+  </script>
+</body>
+</html>

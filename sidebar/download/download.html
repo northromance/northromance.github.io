@@ -3,25 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>下载</title>
+  <title>下载中心</title>
 
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/sidebar.css">
 
   <style>
-    .download-wrap {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 0 12px;
+    :root {
+      --page-bg: #e2dfdf;
+      --panel-bg: #ffffff;
+      --text-main: #2f3540;
+      --text-sub: #6a7380;
+      --sea-blue: #1e3c72;
+      --line-soft: #d6dbe3;
+      --line-accent: rgba(30, 60, 114, 0.22);
     }
 
-    .download-note {
-      background: #fff;
+    body {
+      background-color: var(--page-bg);
+      color: var(--text-main);
+    }
+
+    header {
+      background: transparent;
+      color: var(--sea-blue);
+    }
+
+    header h1 {
+      letter-spacing: 0.06em;
+    }
+
+    header p {
+      color: var(--text-sub);
+      margin: 4px 0 0;
+    }
+
+    main {
+      padding: 20px;
+      padding-bottom: 90px;
+    }
+
+    .download-wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--panel-bg);
       border-radius: 12px;
-      padding: 18px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
-      line-height: 1.8;
-      color: #444;
+      border: 1px solid var(--line-accent);
+      box-shadow: 0 8px 18px rgba(30, 60, 114, 0.08);
+      padding: 16px;
+    }
+
+    .panel h2 {
+      margin: 0 0 12px;
+      color: var(--sea-blue);
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--text-sub);
+      line-height: 1.7;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    .download-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .download-table thead th {
+      font-family: "STSong", "Songti SC", "Noto Serif SC", "仿宋", serif;
+      font-size: 1rem;
+      color: #f5f8fd;
+      background: var(--sea-blue);
+      padding: 12px 10px;
+      border-bottom: 1px solid rgba(30, 60, 114, 0.3);
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .download-table tbody td {
+      padding: 11px 10px;
+      border-bottom: 1px dashed var(--line-soft);
+      color: var(--text-main);
+      vertical-align: top;
+      background: #fff;
+    }
+
+    .download-table tbody tr:hover td {
+      background: #f5f8fc;
+    }
+
+    .download-link,
+    .meta-link {
+      color: var(--sea-blue);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 1px;
+    }
+
+    .download-link:hover,
+    .meta-link:hover {
+      color: #17315c;
+    }
+
+    .muted {
+      color: #7d8590;
+    }
+
+    .video-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .video-list li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px dashed var(--line-soft);
+    }
+
+    .video-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .video-title {
+      color: var(--text-main);
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -38,15 +161,90 @@
   </div>
 
   <header>
-    <h1>下载页面</h1>
-    <p>资源正在整理中</p>
+    <h1>下载中心</h1>
+    <p>浅白底色，冷白与深蓝，收纳每一段声音和影像。</p>
   </header>
 
   <main>
     <div class="download-wrap">
-      <div class="download-note">
-        <p>当前下载资源正在整理，后续会在这里提供音频、视频与歌词文件的下载入口。</p>
-      </div>
+      <section class="panel">
+        <h2>音乐下载表</h2>
+        <div class="table-wrap">
+          <table class="download-table">
+            <thead>
+              <tr>
+                <th>作品名称</th>
+                <th>下载链接（MP3）</th>
+                <th>歌词 + 歌词文件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>深海（Intro）</td>
+                <td><a class="download-link" href="../../audio/shenhai.mp3" download>下载 MP3</a></td>
+                <td><span class="muted">暂无独立歌词文件</span></td>
+              </tr>
+              <tr>
+                <td>到明天</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/到明天 - 刘森.mp3" download>下载 MP3</a></td>
+                <td>
+                  <a class="meta-link" href="../albums/detail/秋秋叶/到明天.html">查看歌词</a>
+                  <span class="muted"> / </span>
+                  <a class="meta-link" href="../../audio/秋秋叶/到明天 - 刘森.lrc" download>下载 LRC</a>
+                </td>
+              </tr>
+              <tr>
+                <td>站在人文楼梯口看窗外</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/宫爆熊丁 - 站在人文楼梯口看窗外.mp3" download>下载 MP3</a></td>
+                <td><span class="muted">暂无歌词文件</span></td>
+              </tr>
+              <tr>
+                <td>你坐在我身边</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/秋秋叶 - 你坐在我身边.mp3" download>下载 MP3</a></td>
+                <td><span class="muted">暂无歌词文件</span></td>
+              </tr>
+              <tr>
+                <td>农家小炒肉</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/秋秋叶 - 农家小炒肉.mp3" download>下载 MP3</a></td>
+                <td><span class="muted">暂无歌词文件</span></td>
+              </tr>
+              <tr>
+                <td>平乐园北没有鬼</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/秋秋叶 - 平乐园北没有鬼.mp3" download>下载 MP3</a></td>
+                <td><span class="muted">暂无歌词文件</span></td>
+              </tr>
+              <tr>
+                <td>渡</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/秋秋叶 - 渡.mp3" download>下载 MP3</a></td>
+                <td><a class="meta-link" href="../albums/detail/秋秋叶/渡.html">查看歌词</a></td>
+              </tr>
+              <tr>
+                <td>面朝大海春暖花开</td>
+                <td><a class="download-link" href="../../audio/秋秋叶/秋秋叶 - 面朝大海春暖花开.mp3" download>下载 MP3</a></td>
+                <td><a class="meta-link" href="../albums/detail/秋秋叶/面朝大海春暖花开.html">查看歌词</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>视频列表</h2>
+        <ul class="video-list">
+          <li><span class="video-title">北京青年广播牢骚</span><a class="download-link" href="../../video/北京青年广播牢骚.mp4" download>下载</a></li>
+          <li><span class="video-title">鱼跃凭海阔</span><a class="download-link" href="../../video/鱼跃凭海阔.mp4" download>下载</a></li>
+          <li><span class="video-title">缺口</span><a class="download-link" href="../../video/缺口.mp4" download>下载</a></li>
+          <li><span class="video-title">缺口2</span><a class="download-link" href="../../video/缺口2.mp4" download>下载</a></li>
+          <li><span class="video-title">Make You Feel My Love</span><a class="download-link" href="../../video/Make You Feel My Love.mp4" download>下载</a></li>
+          <li><span class="video-title">make you feel my love带刘森</span><a class="download-link" href="../../video/make you feel my love带刘森.mp4" download>下载</a></li>
+          <li><span class="video-title">Whisper</span><a class="download-link" href="../../video/Whisper.mp4" download>下载</a></li>
+          <li><span class="video-title">冬夜里的雨滴</span><a class="download-link" href="../../video/冬夜里的雨滴.mp4" download>下载</a></li>
+          <li><span class="video-title">刘森在星星峡遇暴风雨</span><a class="download-link" href="../../video/刘森在星星峡遇暴风雨.mp4" download>下载</a></li>
+          <li><span class="video-title">敌意</span><a class="download-link" href="../../video/敌意.mp4" download>下载</a></li>
+          <li><span class="video-title">白鹳首发会</span><a class="download-link" href="../../video/白鹳首发会.mp4" download>下载</a></li>
+          <li><span class="video-title">末端白鹳</span><a class="download-link" href="../../video/末端白鹳.mp4" download>下载</a></li>
+        </ul>
+      </section>
     </div>
   </main>
 
